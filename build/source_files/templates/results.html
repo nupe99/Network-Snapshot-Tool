@@ -1,0 +1,61 @@
+{% extends 'main.html' %}
+
+{% block head %}
+
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: DodgerBlue;
+  color: white;
+}
+</style>
+
+
+{% endblock %}
+
+
+{% block body %}
+<br>
+<br>
+<div style="padding-left:16px">
+  <h2>Results</h2>
+  <p>Changes in state</p>
+  <table id="customers">
+    <tr>
+      <th>Check</th>
+      <th>Device</th>
+      <th>Changes</th>
+    </tr>
+
+  {% for task in results['checks'].keys() %}
+    {% for dev in results['checks'][task] %}
+     {% for output in results['checks'][task][dev] %}
+    <tr>
+      <td>{{task}}</td>
+      <td>{{dev}}</td>
+      <td>{{output}}</td>
+    </tr>
+   {% endfor %}
+   {% endfor %}
+  {% endfor %}
+  </table>
+</div>
+
+{% endblock %}

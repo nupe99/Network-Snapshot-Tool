@@ -1,0 +1,100 @@
+{% extends 'main.html' %}
+
+{% block head %}
+
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: DodgerBlue;
+  color: white;
+}
+</style>
+
+
+{% endblock %}
+
+
+{% block body %}
+  <br>
+  <br>
+  <p style="padding-left:16px">
+  <h2 style="margin-left:1em"> How to Stop Application</h2>
+  <p style="margin-left:2.5em"> Go to terminal windows where app was run and press CTRL-C</p>
+  <p  style="margin-left:2.5em"> Taking this action will shutdown the net-snapshot application</p>
+  <br />
+<hr width=”100%”>
+  <br />
+  <br />
+  <h2 style="margin-left:1em"> How to Import Devices</h2>
+  <p style="margin-left:2.5em"> There are two options to accomplish this:</p>
+  <br />
+  <p style="margin-left:2.5em"><strong> Option #1 - Define Device Topology in a CSV file</strong></p>
+  <p style="margin-left:2.5em"> In Net-Snapshot Web UI, select "Upload Device List" Tab</p>
+  <p style="margin-left:2.5em"> Downlaod sample CSV file and enter a row per-device.</p>
+  <p style="margin-left:2.5em"> OR</p>
+  <p style="margin-left:2.5em"><strong> Option #2 - Manually define Device Topology in a YAML File</strong></p>
+  <p style="margin-left:2.5em"> Place the Yaml topology file in the "net-snapshot/mount" directory. File must be named "topology.yaml"</p>
+  <p style="margin-left:2.5em"> Sample topology file can be found at "net-snapshot/mount/topology.yaml"</p>
+ <br />
+ <br />
+  <hr width=”100%”>
+  <br />
+  <h2 style="margin-left:1em">Steps to perform operational state capture (Snapshot)</h2>
+  <p style="margin-left:2.5em"><strong>1. </strong>Select "Collect" tab</p>
+  <p style="margin-left:2.5em"><strong>2. </strong>Choose one or more operational state capture options in addition to one or more devices.</p>
+  <p style="margin-left:2.5em"><strong>3. </strong>Select "Capture" button to begin capture</p>
+  <br />
+  <p style="margin-left:2.5em">Note: Job ID is presented once the capture process begins. Once the capture completes, the job ID should be visible on the home page. </p>
+  <br />
+  <hr width=”100%”>
+  <br />
+  <h2 style="margin-left:1em">Steps to compare two operational state captures:</h2>
+  <p style="margin-left:2.5em"><strong>1. </strong>Select "Compare" tab</p>
+  <p style="margin-left:2.5em"><strong>2. </strong>Select two job IDs from the list of captures</p>
+  <p style="margin-left:2.5em"><strong>3. </strong>Select "Compare" button</p>
+  <br />
+  <p style="margin-left:2.5em">Note: The the operational state changes between the two captures will be presented. If no changes are presented, no differences were detected between the two operational state captures. </p>
+  <br />
+  <hr width=”100%”>
+  <br />
+  <h2 style="margin-left:1em">Supported Operational State captures:</h2>
+  <p style="margin-left:2.5em"><strong>OSPF Interfaces </strong>- Capture state of OSPF enabled interfaces</p>
+  <p style="margin-left:2.5em"><strong>OSPF SPF Runs </strong>- Capture the number of times OSPF SPF calculations have been performed.</p>
+  <p style="margin-left:2.5em"><strong>OSPF Neighbors </strong>- Capture state of OSPF neighbor adjacencies</p>
+  <p style="margin-left:2.5em"><strong>BGP Neighbors  </strong>- Capture state of BGP neighbor adjacency changes</p>
+  <p style="margin-left:2.5em"><strong>EIGRP Neighbors  </strong>- Capture state of EIGRP neighbor adjacency changes</p>
+  <p style="margin-left:2.5em"><strong>Route Table Changes </strong>- Capture state of IPV4 route tabling</p>
+  <p style="margin-left:2.5em"><strong>HSRP </strong>- Capture state of HSRP</p>
+  <p style="margin-left:2.5em"><strong>Packet Fragmentation </strong>Capture state of IP fragmentation (only IOS and IOS-XE devices supported)</p>
+  <p style="margin-left:2.5em"><strong>Interfaces </strong>- Capture state of Interface counters. Interface up/down status, input errors, output drops, speed, duplex, interface mtu, and switchport mode (only applies to L2 interfaces).</p>
+  <p style="margin-left:2.5em"><strong>DMVPN </strong>- For DMVPN hubs. Captures state of registered DMVPN spoke routers</p>
+  <p style="margin-left:2.5em">Note: The the operational state changes between the two captures will be presented. If no changes are presented, no differences were detected between the two operational state captures. </p>
+  <br />
+
+  <hr width=”100%”>
+
+  <br />
+  <h3>See Github Repo README file for supported API calls</h3>
+  <br />
+  <hr width=”100%”>
+
+</div>
+
+{% endblock %}

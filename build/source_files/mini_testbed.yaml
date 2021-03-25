@@ -1,0 +1,44 @@
+# Testbed file for pyats
+---
+testbed:
+  name: devnet_mini
+  credentials:
+    default:
+      username: cisco
+      password: cisco
+    enable:
+      password: cisco
+
+devices:
+  NX-SW:
+    os: nxos
+    type: switch
+    connections:
+      vty:
+        protocol: telnet
+        ip: 10.10.20.62
+        port: 23
+  XR-RT:
+    os: iosxr
+    type: router
+    connections:
+      vty:
+        protocol: telnet
+        ip: 10.10.20.63
+        port: 23
+  CSR-RT:
+    os: iosxe
+    type: router
+    connections:
+      vty:
+        protocol: telnet
+        ip: 10.10.20.64
+        port: 23
+  IOS-SW:
+    os: ios
+    type: switch
+    connections:
+      vty:
+        protocol: telnet
+        ip: 10.10.20.65
+        port: 23

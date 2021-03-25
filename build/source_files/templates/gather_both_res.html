@@ -1,0 +1,70 @@
+{% extends 'main.html' %}
+
+{% block head %}
+<style>
+    .paddingBetweenCols td
+{
+    padding:0 15px;
+
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+
+<br>
+<br>
+
+<table width="600" border="0" class="paddingBetweenCols" >
+<tr>
+   <th colspan="3">
+<p><strong>Select collection details and devices to snapshot </strong></p>
+    <p><strong>You may control-click (Windows) or command-click (Mac) to select more than one.</strong></p>
+</th>
+
+</tr>
+
+    <tr>
+       <form id="form1" name="form1" action="/gather_both" method="post">
+        <td>
+        <div style="float:right;">
+
+            <select name="net_checks" size="6" multiple="multiple" tabindex="1">
+            <option value=ospf_int_state>OSPF Interfaces</option>
+            <option value=ospf_spf_state>OSPF SPF Runs</option>
+            <option value=ospf_neighbors_state>OSPF Neighbors</option>
+                <option value=bgp_neighbors_state>BGP Neighbors</option>
+               <option value=eigrp_neighbors_state>EIGRP Neighbors</option>
+            <option value=route_state>Route Table Changes</option>
+                <option value=hsrp_state>HSRP</option>
+               <option value=frag_state>Packet Fragmentation</option>
+                <option value=interface_state>Interfaces</option>
+                 <option value=acl_state>Access Control Lists</option>
+                <option value=dmvpn_state>DMVPN</option>
+            </select>
+            </div>
+        </td>
+        <td>
+            <div style="float:right;">
+            <select name="net_devs" size="6" multiple="multiple" tabindex="1">
+            {% for device in device_list %}
+            <option value={{device}}>{{device}}</option>
+            {% endfor %}
+            </select>
+            </div>
+        </td>
+           </form>
+        <td>
+            <div style="float:left;">
+            <button type="submit" form="form1" value="Submit">Capture</button>
+            </div>
+        </td>
+
+    </tr>
+
+<tr><td colspan="3"><br><span style="color:red">Performing state capture. Creating job ID {{job_id}}. This may take a few minutes...</span></td></tr>
+
+    </table>
+
+{% endblock %}

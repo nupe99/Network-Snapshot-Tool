@@ -1,0 +1,16 @@
+devices:
+  F241.06.18-2911:
+    connections:
+      cli:
+        ip: 10.122.189.144
+        port: 23
+        protocol: telnet
+    credentials:
+      default:
+        password: cisco!123
+        username: admin
+      enable:
+        password: cisco!123
+    os: ios
+    platform: router
+    type: ios

@@ -1,0 +1,74 @@
+{% extends 'main.html' %}
+
+{% block head %}
+
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: DodgerBlue;
+  color: white;
+}
+</style>
+
+
+{% endblock %}
+
+
+{% block body %}
+<br>
+<br>
+<div style="padding-left:16px">
+  <h2>Jobs</h2>
+  <p>Recent Entries</p>
+  <form action="/" method="post">
+  <table id="customers">
+    <tr>
+      <th></th>
+      <th>Job Name</th>
+      <th>Owner</th>
+      <th>Data Collected</th>
+      <th>Devices Collected</th>
+       <th>Date Added</th>
+    </tr>
+
+  {% for job in jobs %}
+    <tr>
+      <td><input type="checkbox" id={{job['name']}} name=net_deletes value={{job['name']}}></td>
+      <td>{{job['name']}}</td>
+      <td>{{job['owner']}}</td>
+      <td>
+        {% for check in job['checks'] %}
+        <p>{{check}}</p>
+        {% endfor %}
+      </td>
+      <td class="spaceUnder">
+        {% for device in job['devices'] %}
+        <p>{{device}}</p>
+        {% endfor %}
+      </td>
+      <td>{{job['date']}}</td>
+    </tr>
+  {% endfor %}
+  </table>
+    <input type="submit" value="Delete">
+  </form>
+</div>
+
+{% endblock %}

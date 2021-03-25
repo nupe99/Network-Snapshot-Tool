@@ -1,0 +1,3 @@
+hostname,ip,username,password,protocol,os,enable_password,platform
+R1,1.1.1.1:23,cisco,cisco,telnet,iosxe,cisco,router
+SW1,2.2.2.2:22,cisco,cisco,ssh,nxos,cisco,switch
